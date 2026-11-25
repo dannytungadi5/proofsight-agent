@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProofSight: verified agent-to-agent commerce on Concordium</title>
+<meta name="description" content="ProofSight sells data analysis to other agents, paid per request in CCD via x402, with Verified by Concordium badges on both sides and an on-chain audit record of every report.">
+<style>
+  :root { --bg:#0b0e14; --panel:#121722; --ink:#e8ecf3; --dim:#9aa5b8; --acc:#4da3ff; --ok:#3ddc97; --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font:16px/1.6 -apple-system,'Segoe UI',Inter,Roboto,sans-serif; }
+  .wrap { max-width:880px; margin:0 auto; padding:48px 20px 80px; }
+  .tag { display:inline-block; font:12px var(--mono); color:var(--acc); border:1px solid var(--acc); border-radius:99px; padding:3px 12px; margin-bottom:18px; }
+  h1 { font-size:34px; line-height:1.2; margin-bottom:14px; }
+  h2 { font-size:21px; margin:44px 0 14px; color:var(--acc); }
+  p.sub { color:var(--dim); font-size:17px; max-width:640px; }
+  .badges { display:flex; gap:12px; flex-wrap:wrap; margin:26px 0 6px; }
+  .badge { background:var(--panel); border:1px solid #232c3d; border-radius:10px; padding:12px 16px; font:13px var(--mono); }
+  .badge b { color:var(--ok); display:block; font-size:12px; margin-bottom:4px; }
+  ol.steps { margin:0 0 0 20px; color:var(--dim); }
+  ol.steps li { margin:10px 0; }
+  ol.steps b { color:var(--ink); }
+  table { width:100%; border-collapse:collapse; font:13px var(--mono); margin-top:8px; }
+  th, td { text-align:left; padding:9px 10px; border-bottom:1px solid #232c3d; vertical-align:top; word-break:break-all; }
+  th { color:var(--dim); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  a { color:var(--acc); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .card { background:var(--panel); border:1px solid #232c3d; border-radius:12px; padding:20px 22px; margin-top:14px; }
+  .card h3 { font-size:15px; margin-bottom:8px; }
+  .card p, .card li { color:var(--dim); font-size:14.5px; }
+  .card ul { margin-left:18px; }
+  code { font-family:var(--mono); font-size:.92em; background:#1a2230; padding:1px 6px; border-radius:5px; }
+  .video { background:var(--panel); border:1px dashed #2c3a52; border-radius:12px; padding:44px 20px; text-align:center; color:var(--dim); margin-top:14px; }
+  footer { margin-top:56px; color:var(--dim); font-size:13.5px; border-top:1px solid #232c3d; padding-top:18px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">Concordium Trusted Agents Hackathon &middot; Encode Club 2026</span>
+  <h1>ProofSight: verified agent-to-agent commerce on Concordium</h1>
+  <p class="sub">ProofSight is an autonomous data-analysis agent that sells its work to other
+  agents over HTTP, paid per request in CCD via x402 micropayments. Both sides carry a
+  <b>Verified by Concordium</b> badge from the Concordium Agent Registry (CIS-8004), and every
+  delivered report is hash-anchored on-chain as a tamper-proof, EU AI Act style audit record.</p>
+
+  <div class="badges">
+    <div class="badge"><b>SELLER AGENT &middot; BADGE VALID</b>JyP9XuZ1MiqWZV82gCRTo &middot; token 1493 &middot; Active</div>
+    <div class="badge"><b>BUYER AGENT &middot; BADGE VALID</b>JyP9Y27twsq5YEYidFCan &middot; token 1499 &middot; Active</div>
+  </div>
+  <p style="font-size:13px;color:var(--dim)">Verify either badge:
+    <code>https://agent-registry-mcp.concordium.com/v1/badge-check/&lt;badge&gt;?network=testnet</code></p>
+
+  <h2>How a purchase works</h2>
+  <ol class="steps">
+    <li><b>Discovery + trust check.</b> The buyer agent finds ProofSight's agent card and verifies its
+      Concordium badge via the Agent Registry: Active status, a verified human owner behind the agent,
+      and the served card's SHA-256 matching the hash pinned on-chain. No valid badge, no payment.</li>
+    <li><b>HTTP 402.</b> The buyer calls <code>POST /analyze</code> and receives
+      <code>402 Payment Required</code> with an x402 payment requirement: 1 CCD on Concordium testnet.</li>
+    <li><b>Payment.</b> The buyer signs the payment with its Concordium account and retries.
+      A self-hosted x402 facilitator verifies and settles on-chain, sponsoring the network fee.</li>
+    <li><b>Delivery.</b> ProofSight returns the analysis report.</li>
+    <li><b>Audit anchor.</b> The report's SHA-256 is written on-chain with a RegisterData transaction:
+      a permanent record of what the agent produced, for whom, and when.</li>
+  </ol>
+
+  <h2>Live testnet evidence</h2>
+  <table>
+    <tr><th>Item</th><th>Link</th></tr>
+    <tr><td>Seller agent card (hash pinned on-chain)</td><td><a href="https://dannytungadi5.github.io/proofsight-agent/agent-card.json">agent-card.json</a></td></tr>
+    <tr><td>Buyer agent card (hash pinned on-chain)</td><td><a href="https://dannytungadi5.github.io/proofsight-agent/buyer-agent-card.json">buyer-agent-card.json</a></td></tr>
+    <tr><td>Seller registration (CIS-8004)</td><td><a href="https://ccdexplorer.io/testnet/transaction/e65fa0c4c229ccc83239bb634e23b1f59f3fbd5fc653fe1795e7962dbceba0d8">ccdexplorer</a></td></tr>
+    <tr><td>Buyer registration (CIS-8004)</td><td><a href="https://ccdexplorer.io/testnet/transaction/e64c08ff312525871bd2d656d4fe6796076821880502894588ba3589e53d5877">ccdexplorer</a></td></tr>
+    <tr><td>x402 payment 1 &middot; 1 CCD</td><td><a href="https://ccdexplorer.io/testnet/transaction/b35613f9a835e3a5ce774fe417f0640d0ab260e71022c17ae3d8013494b6672f">ccdexplorer</a></td></tr>
+    <tr><td>Audit anchor 1 (report hash)</td><td><a href="https://ccdexplorer.io/testnet/transaction/4ee4ae672de8d8c4136b5519164c7fc5238084dff3382d85cd8221b855b941f4">ccdexplorer</a></td></tr>
+    <tr><td>x402 payment 2 &middot; 1 CCD</td><td><a href="https://ccdexplorer.io/testnet/transaction/18df66568dff32d0f272222b25410cc07c670217b339cc97b8d7e78e7dbe20e0">ccdexplorer</a></td></tr>
+    <tr><td>x402 payment 3 &middot; 1 CCD</td><td><a href="https://ccdexplorer.io/testnet/transaction/cf2689fab224402f7da5db6b5632afc5be93589248b8d30f19f825e8dda3884a">ccdexplorer</a></td></tr>
+    <tr><td>x402 payment 4 &middot; 1 CCD</td><td><a href="https://ccdexplorer.io/testnet/transaction/ab9ac50526a55439f5da09457de5417e0feb63803037b73796565424eb4e369b">ccdexplorer</a></td></tr>
+    <tr><td>Source code</td><td><a href="https://github.com/dannytungadi5/proofsight-agent">github.com/dannytungadi5/proofsight-agent</a></td></tr>
+  </table>
+
+  <h2>Demo video</h2>
+  <div class="video">3-minute end-to-end demo: badge verification &rarr; 402 &rarr; x402 payment &rarr; report &rarr; on-chain audit anchor.<br>(embedded here before submission)</div>
+
+  <h2>Path to mainnet</h2>
+  <div class="card">
+    <ul>
+      <li><b>The infrastructure is already on mainnet.</b> The Agent Registry (CIS-8004), the CIS-8 key
+        registry and the badge flow are Concordium platform services. Moving is a config change:
+        network parameter, mainnet contract addresses, and a mainnet identity through the same issuance flow.</li>
+      <li><b>The economics already work.</b> 1 CCD per report is real revenue on mainnet; facilitator fee
+        sponsorship is the seller's customer-acquisition cost and can be priced in.</li>
+      <li><b>Identity is the differentiator.</b> Both agents are backed by an identity-verified human
+        today; on mainnet that becomes a commercial trust primitive &mdash; a buyer can require
+        <code>badge_valid == true</code> before paying anything.</li>
+      <li><b>Next:</b> buyer-side badge policy hooks, dispute evidence from audit anchors, and payment in a
+        Concordium PLT stablecoin once available.</li>
+    </ul>
+  </div>
+
+  <footer>
+    Built by Septian Panjaya for the Concordium Trusted Agents Hackathon (Encode Club, Nov-Dec 2026).
+    Everything on this page is verifiable on Concordium testnet.
+  </footer>
+</div>
+</body>
+</html>
