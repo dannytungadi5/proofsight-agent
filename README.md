@@ -95,8 +95,6 @@ badge at `https://agent-registry-mcp.concordium.com/v1/badge-check/<badge>?netwo
   by the Agent Registry MCP service (register, setAgentURI, ...).
 - `agent-card.json`, `buyer-agent-card.json`: A2A agent cards with the
   Concordium badge extension, served via GitHub Pages and hash-pinned on-chain.
-- `STATE.md`: full build log: accounts, transaction hashes, and how each step
-  was done.
 
 ## Run it yourself
 
