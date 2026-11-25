@@ -9,7 +9,7 @@ the [Concordium Agent Registry](https://docs.concordium.com/en/mainnet/technical
 so there is a tamper-proof, EU AI Act style audit record of what the agent
 produced, for whom, and when.
 
-Built for the **Concordium Trusted Agents Hackathon** (Encode Club, Nov-Dec 2026).
+Built by **Septian Panjaya** for the **Concordium Trusted Agents Hackathon** (Encode Club, Nov-Dec 2026).
 
 ## The flow
 
