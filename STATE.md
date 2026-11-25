@@ -51,6 +51,10 @@ Verified payments (buyer → seller, 1.000000 CCD each, facilitator-sponsored):
 | --- | --- | --- |
 | 1 | `b35613f9a835e3a5ce774fe417f0640d0ab260e71022c17ae3d8013494b6672f` | `4ee4ae672de8d8c4136b5519164c7fc5238084dff3382d85cd8221b855b941f4` |
 | 2 | `18df66568dff32d0f272222b25410cc07c670217b339cc97b8d7e78e7dbe20e0` | `a2d3c5b42f8cc7a4…` (see `out/audit-log.json`) |
+| 3 | `cf2689fab224402f7da5db6b5632afc5be93589248b8d30f19f825e8dda3884a` | report hash identical to payment 1 (deterministic demo data); re-anchored as `797de8304b8712cffe59392de2d95416a0a47e8606bb471885d1b04e23371672` |
+
+Pipeline re-verified end-to-end 25 Nov 13:10 WITA (payment 3) after buyer
+registration; buyer badge `JyP9Y27twsq5YEYidFCan` check-badge = badge_valid true.
 
 Explorer base: `https://ccdexplorer.io/testnet/transaction/<hash>`.
 
