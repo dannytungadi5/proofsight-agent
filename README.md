@@ -138,4 +138,4 @@ node scripts/buyer.mjs       # badge check -> 402 -> pay 1 CCD -> report
 - [x] CCDExplorer links: evidence table above
 - [x] Working end-to-end demo: x402 payment + badge verification + audit anchor, all finalised on testnet
 - [x] Path to mainnet: section above
-- [ ] Demo video (<= 3 min): linked here before submission
+- [x] Demo video (1 min 40 s): https://dannytungadi5.github.io/proofsight-agent/docs/proofsight-demo.mp4 and embedded on https://proofsight.pages.dev
