@@ -1,0 +1,1 @@
+{"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "build_register", "arguments": {"network": "testnet", "agent_uri": "https://dannytungadi5.github.io/proofsight-agent/agent-card.json", "metadata_hash_hex": "2dc7e0a578ad9815a575a57e80ea20fe59bd69c24e000f3baed5ee9713c41003", "sender": "3YWKbsQVyV2QTJGLw8gsVyN6TJPvjyWoqfZxtybuWC9wDn2iei"}}}
