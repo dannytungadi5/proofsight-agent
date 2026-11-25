@@ -2,7 +2,7 @@
 
 ## On-chain identity (Concordium testnet)
 
-- Identity: issued by Concordium testnet IP for Septian Panjaya (`out/identity-object.json`).
+- Identity: issued by the Concordium testnet identity provider; attributes held locally in `out/identity-object.json` (gitignored).
 - HD seed: backed up in Instinct vault as "Concordium testnet seed (ProofSight)".
   Local copy: `secrets/seed.hex` (gitignored). Key derivation:
   `wallet.getAccountSigningKey(0, identityIndex=0, credNumber)`.
@@ -62,9 +62,10 @@ Explorer base: `https://ccdexplorer.io/testnet/transaction/<hash>`.
 
 1. ~~Register the buyer as a second agent~~ DONE (badge valid, hash pinned).
 2. ~~README~~ DONE (architecture, evidence table, path to mainnet).
-3. Decide public deployment (needs a host account; Vercel via Alex's GitHub is
-   the likely route — flag to Alex first) or demo-by-video only. If deployed,
-   add service endpoints to the card and re-pin.
+3. Public deployment: DECIDED 25 Nov - Cloudflare Pages (pages.dev) on the
+   user's own account only; no other hosting accounts. Submitter name for the
+   Encode Club form: Septian Panjaya. Public-facing name everywhere:
+   Septian Panjaya.
 4. Record demo video ≤3 min (badge check → 402 → pay → report → explorer +
    audit anchor). Upload (YouTube unlisted on dannytungadi5 Google, or Drive link).
 5. Submit via Encode Club dashboard (registered 25 Nov 12:46). Deadline:

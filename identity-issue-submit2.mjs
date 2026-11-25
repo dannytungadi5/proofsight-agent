@@ -1,4 +1,4 @@
-// Step 2c: full issuance run - start, get form, submit Alex's test attributes,
+// Step 2c: full issuance run - start, get form, submit test attributes (ID_FIRST_NAME/ID_LAST_NAME env),
 // follow the callback, and retrieve the identity object.
 import fs from 'node:fs';
 
@@ -36,8 +36,8 @@ const body = new URLSearchParams({
     endpoint_version: val('endpoint_version'),
     id_cred_pub_signature: val('id_cred_pub_signature'),
     expiry: '2030-12',
-    firstName: 'Alex',
-    lastName: 'Panjaya',
+    firstName: process.env.ID_FIRST_NAME,
+    lastName: process.env.ID_LAST_NAME,
     sex: '1',
     dob: '19940916',
     countryOfResidence: 'ID',
