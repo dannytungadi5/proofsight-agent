@@ -11,6 +11,14 @@
 | --- | --- | --- |
 | seller (ProofSight owner) | `3YWKbsQVyV2QTJGLw8gsVyN6TJPvjyWoqfZxtybuWC9wDn2iei` | 0 |
 | buyer (demo client) | `46MZRmiYH2uiEC5fAAnw4vto5PDzpKMLdxFo5aNLbKZdX2AXHC` | 1 |
+
+Buyer is also a registered agent: token_id **1499**, badge
+**`JyP9Y27twsq5YEYidFCan`**, status Active, card
+`https://dannytungadi5.github.io/proofsight-agent/buyer-agent-card.json`
+(hash pinned via setAgentURI tx
+`430bd28295c76076990abaafaf69ac507e4ca0ef8033505ac8203f857145c644`;
+register tx `e64c08ff312525871bd2d656d4fe6796076821880502894588ba3589e53d5877`).
+check-badge = badge_valid true.
 | facilitator (fee sponsor) | `3CBmfAFQp4A3Twr3g81i8HGwPwpwQShLUwokqpu7ps9aPGAXZL` | 2 |
 
 Account creation tx (seller): `0f4e14ca290802b6bbc272afe86b751440d5f65356bbdb375a1fa4ea7e86b3be`.
@@ -48,9 +56,8 @@ Explorer base: `https://ccdexplorer.io/testnet/transaction/<hash>`.
 
 ## Remaining work (in order)
 
-1. Register the **buyer** as a second agent (own card + badge) so the demo is
-   agent-to-agent with both sides verified.
-2. README: architecture, run instructions, evidence table, path to mainnet.
+1. ~~Register the buyer as a second agent~~ DONE (badge valid, hash pinned).
+2. ~~README~~ DONE (architecture, evidence table, path to mainnet).
 3. Decide public deployment (needs a host account; Vercel via Alex's GitHub is
    the likely route — flag to Alex first) or demo-by-video only. If deployed,
    add service endpoints to the card and re-pin.
