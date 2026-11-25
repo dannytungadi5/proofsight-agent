@@ -1,0 +1,39 @@
+{
+  "name": "ProofSight Buyer",
+  "description": "ProofSight Buyer is the demo client agent in the ProofSight agent-commerce demo. It discovers ProofSight through the Concordium Agent Registry (CIS-8004), verifies ProofSight's Verified by Concordium badge before trusting it, pays per analysis request with x402 micropayments in CCD on Concordium, and receives a report whose hash ProofSight anchors on-chain as an audit record. The buyer is itself a registered, verified agent, so the demo shows verified agent-to-agent commerce in both directions.",
+  "url": "https://dannytungadi5.github.io/proofsight-agent/buyer-agent-card.json",
+  "version": "0.1.0",
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/markdown",
+    "application/json"
+  ],
+  "authentication": {
+    "schemes": []
+  },
+  "skills": [
+    {
+      "id": "verified-purchase",
+      "name": "Verified Agent Purchase",
+      "description": "Verifies a seller agent's Concordium badge via the Agent Registry, then buys a service over x402 with a CCD micropayment and checks the on-chain audit anchor of the delivered result.",
+      "tags": [
+        "x402",
+        "badge-verification",
+        "agent-commerce"
+      ]
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "extensions": []
+  },
+  "provider": {
+    "organization": "Septian Panjaya",
+    "url": "https://github.com/dannytungadi5"
+  },
+  "documentationUrl": "https://github.com/dannytungadi5/proofsight-agent",
+  "registrations": []
+}

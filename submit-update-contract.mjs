@@ -6,7 +6,7 @@ import fs from 'node:fs';
 
 const spec = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 const seedHex = fs.readFileSync('secrets/seed.hex', 'utf8').trim();
-const account = JSON.parse(fs.readFileSync('out/account.json', 'utf8'));
+const account = JSON.parse(fs.readFileSync(process.argv[4] ?? 'out/account.json', 'utf8'));
 
 const wallet = ccd.ConcordiumHdWallet.fromHex(seedHex, 'Testnet');
 const signingKey = wallet.getAccountSigningKey(0, account.identityIndex, account.credNumber).toString('hex');
