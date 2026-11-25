@@ -19,6 +19,17 @@ Buyer is also a registered agent: token_id **1499**, badge
 `430bd28295c76076990abaafaf69ac507e4ca0ef8033505ac8203f857145c644`;
 register tx `e64c08ff312525871bd2d656d4fe6796076821880502894588ba3589e53d5877`).
 check-badge = badge_valid true.
+
+## Public name change (25 Nov 13:45 WITA)
+User decision: public-facing name = **Septian Panjaya** everywhere (cards,
+README, submission form). Provider field scrubbed in both cards; hashes
+re-pinned: seller setAgentURI tx
+`40814ff9ca212e30c9eb1176c8e902a75f05dc1e0b24c1129b2dd2dfeda55de0`, buyer
+setAgentURI tx `f368867e22d5e6cb73a4ad0702aa5633bcf0246c529d2adb83548ea65d37164c`.
+Both check-badge = badge_valid true after re-pin. Future git commits authored
+as Septian Panjaya <dannytungadi5@gmail.com>. Note: the testnet identity
+object itself was issued under the user's real name (immutable, not publicly
+displayed by the badge).
 | facilitator (fee sponsor) | `3CBmfAFQp4A3Twr3g81i8HGwPwpwQShLUwokqpu7ps9aPGAXZL` | 2 |
 
 Account creation tx (seller): `0f4e14ca290802b6bbc272afe86b751440d5f65356bbdb375a1fa4ea7e86b3be`.
@@ -55,6 +66,17 @@ Verified payments (buyer → seller, 1.000000 CCD each, facilitator-sponsored):
 
 Pipeline re-verified end-to-end 25 Nov 13:10 WITA (payment 3) after buyer
 registration; buyer badge `JyP9Y27twsq5YEYidFCan` check-badge = badge_valid true.
+
+## Public name change (25 Nov 13:45 WITA)
+User decision: public-facing name = **Septian Panjaya** everywhere (cards,
+README, submission form). Provider field scrubbed in both cards; hashes
+re-pinned: seller setAgentURI tx
+`40814ff9ca212e30c9eb1176c8e902a75f05dc1e0b24c1129b2dd2dfeda55de0`, buyer
+setAgentURI tx `f368867e22d5e6cb73a4ad0702aa5633bcf0246c529d2adb83548ea65d37164c`.
+Both check-badge = badge_valid true after re-pin. Future git commits authored
+as Septian Panjaya <dannytungadi5@gmail.com>. Note: the testnet identity
+object itself was issued under the user's real name (immutable, not publicly
+displayed by the badge).
 
 Explorer base: `https://ccdexplorer.io/testnet/transaction/<hash>`.
 
