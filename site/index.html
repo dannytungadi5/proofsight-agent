@@ -5,125 +5,140 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ProofSight - Verified Agent-to-Agent Commerce on Concordium</title>
 <meta name="description" content="ProofSight sells data analysis to other agents, paid per request in CCD via x402, with Verified by Concordium badges on both sides and an on-chain audit record of every report.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#07090f; --bg2:#0b0f18; --panel:#101623; --panel2:#141b2b;
-    --ink:#eef1f7; --dim:#97a1b5; --dim2:#6b7避难生589;
-    --acc:#4da3ff; --acc2:#7c5cff; --ok:#34d399; --warn:#fbbf24;
-    --line:rgba(255,255,255,.07); --line2:rgba(255,255,255,.12);
-    --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
-    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,'Helvetica Neue',sans-serif;
+    --paper:#F6F3EC; --paper2:#EFEAE0; --ink:#171512; --ink2:#4A463D; --dim:#7A7568;
+    --green:#1E4D38; --green2:#2C6B4E; --lime:#D9F24F; --lime2:#C3E62E;
+    --line:#D8D2C4; --line2:#C6BFB0;
+    --disp:'Archivo',sans-serif; --serif:'Instrument Serif',serif; --mono:'IBM Plex Mono',monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
-  a{color:var(--acc);text-decoration:none}
+  body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--disp);-webkit-font-smoothing:antialiased}
+  a{color:var(--green);text-decoration:none}
   a:hover{text-decoration:underline}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  .mono{font-family:var(--mono)}
+  .eyebrow{font:600 12px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--green)}
+  h2{font:800 clamp(30px,4vw,46px)/1.05 var(--disp);letter-spacing:-.025em;margin:16px 0 14px}
+  h2 em{font:italic 400 1.04em var(--serif);letter-spacing:-.01em}
+  .lede{color:var(--ink2);max-width:620px;font-size:16.5px}
+  section{padding:76px 0;border-top:1px solid var(--line)}
 
   /* nav */
-  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(7,9,15,.75);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;gap:28px;height:64px}
-  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:17px;color:var(--ink)}
+  nav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--ink)}
+  nav .wrap{display:flex;align-items:center;gap:26px;height:62px}
+  .brand{display:flex;align-items:center;gap:11px;font:800 17px var(--disp);color:var(--ink);letter-spacing:-.01em}
   .brand:hover{text-decoration:none}
-  .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:flex;align-items:center;justify-content:center;font:700 13px var(--mono);color:#fff;letter-spacing:.02em}
-  .navlinks{display:flex;gap:24px;margin-left:auto;font-size:14px}
-  .navlinks a{color:var(--dim)}
+  .mark{width:28px;height:28px;background:var(--green);color:var(--lime);display:flex;align-items:center;justify-content:center;font:600 12px var(--mono);border-radius:6px}
+  .navlinks{display:flex;gap:22px;margin-left:auto;font:500 12.5px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  .navlinks a{color:var(--ink2)}
   .navlinks a:hover{color:var(--ink);text-decoration:none}
-  .ghbtn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);border-radius:9px;padding:7px 14px;font-size:13.5px;color:var(--ink);background:var(--panel)}
-  .ghbtn:hover{background:var(--panel2);text-decoration:none}
-  @media(max-width:820px){.navlinks{display:none}}
+  .ghbtn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);border-radius:99px;padding:8px 16px;font:600 12.5px var(--mono);letter-spacing:.04em}
+  .ghbtn:hover{background:var(--green);text-decoration:none;color:var(--paper)}
+  @media(max-width:860px){.navlinks{display:none}}
 
   /* hero */
-  .hero{position:relative;padding:96px 0 72px;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background:
-    radial-gradient(600px 340px at 18% 8%,rgba(77,163,255,.14),transparent 65%),
-    radial-gradient(700px 400px at 85% 30%,rgba(124,92,255,.12),transparent 65%);pointer-events:none}
-  .hero .wrap{position:relative}
-  .pill{display:inline-flex;align-items:center;gap:8px;font:12.5px var(--mono);color:var(--acc);border:1px solid rgba(77,163,255,.35);background:rgba(77,163,255,.08);border-radius:99px;padding:6px 14px;letter-spacing:.04em}
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
-  h1{font-size:clamp(34px,5.2vw,58px);line-height:1.08;letter-spacing:-.02em;margin:26px 0 20px;max-width:760px}
-  h1 .grad{background:linear-gradient(92deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{color:var(--dim);font-size:17.5px;max-width:640px}
-  .ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:9px;border-radius:11px;padding:13px 22px;font-weight:600;font-size:15px;border:1px solid transparent}
+  .hero{padding:88px 0 0}
+  .hero-top{display:flex;align-items:center;gap:12px;font:500 12.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+  .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green2);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{font:900 clamp(44px,7.2vw,92px)/0.98 var(--disp);letter-spacing:-.035em;text-transform:uppercase;margin:30px 0 24px;max-width:1000px}
+  h1 em{font:italic 400 1.02em var(--serif);text-transform:none;letter-spacing:-.02em;color:var(--green)}
+  .sub{color:var(--ink2);font-size:17.5px;max-width:660px}
+  .sub b{color:var(--ink)}
+  .ctas{display:flex;gap:12px;margin:36px 0 0;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;border-radius:99px;padding:14px 26px;font:600 14px var(--mono);letter-spacing:.03em;border:1.5px solid var(--ink)}
   .btn:hover{text-decoration:none}
-  .btn-p{background:linear-gradient(92deg,var(--acc),var(--acc2));color:#fff}
-  .btn-p:hover{filter:brightness(1.1)}
-  .btn-s{border-color:var(--line2);color:var(--ink);background:var(--panel)}
-  .btn-s:hover{background:var(--panel2)}
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:64px}
-  .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-  .stat b{display:block;font:700 26px var(--mono);color:var(--ink);letter-spacing:-.01em}
-  .stat span{color:var(--dim);font-size:13px}
-  .stat b .u{color:var(--acc);font-size:16px}
-  @media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .btn-p{background:var(--ink);color:var(--paper)}
+  .btn-p:hover{background:var(--green);border-color:var(--green)}
+  .btn-s{color:var(--ink);background:transparent}
+  .btn-s:hover{background:var(--lime);border-color:var(--ink)}
 
-  /* sections */
-  section{padding:72px 0}
-  .label{font:12.5px var(--mono);color:var(--acc);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
-  h2{font-size:clamp(26px,3.4vw,36px);letter-spacing:-.015em;margin-bottom:14px}
-  .lede{color:var(--dim);max-width:640px;margin-bottom:40px}
+  /* stats strip */
+  .stats{margin-top:72px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:26px 24px 30px;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:none}
+  .stat b{display:block;font:800 clamp(30px,3.4vw,44px)/1 var(--disp);letter-spacing:-.03em}
+  .stat b .u{color:var(--green);font-size:.55em}
+  .stat span{display:block;margin-top:8px;font:500 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+  @media(max-width:860px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:none}.stat:nth-child(n+3){border-top:1px solid var(--line)}}
+
+  /* marquee */
+  .marquee{overflow:hidden;border-bottom:1px solid var(--ink);background:var(--lime);padding:13px 0}
+  .marquee-inner{display:flex;gap:44px;white-space:nowrap;font:700 13px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);animation:scroll 28s linear infinite;width:max-content}
+  @keyframes scroll{to{transform:translateX(-50%)}}
 
   /* how it works */
-  .flow{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
-  @media(max-width:920px){.flow{grid-template-columns:1fr}}
-  .steps{display:flex;flex-direction:column;gap:10px}
-  .step{display:flex;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-  .stepnum{flex:none;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,rgba(77,163,255,.18),rgba(124,92,255,.18));border:1px solid rgba(77,163,255,.35);display:flex;align-items:center;justify-content:center;font:700 14px var(--mono);color:var(--acc)}
-  .step b{display:block;font-size:15px;margin-bottom:3px}
-  .step p{color:var(--dim);font-size:13.8px;line-height:1.55}
-  .step code{font-family:var(--mono);font-size:.88em;background:rgba(77,163,255,.12);color:var(--acc);padding:1px 6px;border-radius:5px}
+  .flow{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:48px}
+  @media(max-width:960px){.flow{grid-template-columns:1fr}}
+  .steps{border-top:1px solid var(--ink)}
+  .step{display:flex;gap:22px;padding:22px 4px;border-bottom:1px solid var(--line);align-items:baseline}
+  .stepnum{font:italic 400 30px var(--serif);color:var(--green);flex:none;width:44px}
+  .step b{display:block;font:700 16.5px var(--disp);letter-spacing:-.01em;margin-bottom:4px}
+  .step p{color:var(--ink2);font-size:14.5px;line-height:1.6}
+  .step code{font:500 .88em var(--mono);background:var(--lime);color:var(--ink);padding:1px 7px;border-radius:5px}
 
   /* terminal */
-  .term{background:#0a0e16;border:1px solid var(--line2);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45)}
-  .termbar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel)}
-  .tdot{width:11px;height:11px;border-radius:50%}
-  .termtitle{margin-left:8px;color:var(--dim);font:12.5px var(--mono)}
-  .termbody{padding:18px 20px;font:13.2px/1.75 var(--mono);overflow-x:auto;white-space:pre}
-  .termbody .p{color:var(--acc)}
-  .termbody .g{color:var(--ok)}
-  .termbody .y{color:var(--warn)}
-  .termbody .d{color:var(--dim)}
-  .termbody .w{color:#dbe2ee}
+  .term{background:#131510;border-radius:14px;overflow:hidden;box-shadow:10px 10px 0 var(--green)}
+  .termbar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.09)}
+  .tdot{width:10px;height:10px;border-radius:50%}
+  .termtitle{margin-left:8px;color:#8b9078;font:500 12px var(--mono);letter-spacing:.06em}
+  .termbody{padding:20px 22px;font:13px/1.8 var(--mono);overflow-x:auto;white-space:pre}
+  .termbody .p{color:var(--lime)}
+  .termbody .g{color:#7FE0A8}
+  .termbody .y{color:#F2C94C}
+  .termbody .d{color:#8b9078}
+  .termbody .w{color:#E8E6DC}
 
-  /* badge cards */
-  .badges{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
-  @media(max-width:820px){.badges{grid-template-columns:1fr}}
-  .badgecard{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:22px 24px}
-  .badgecard .role{font:12px var(--mono);color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
-  .badgecard .name{font-size:19px;font-weight:700;margin:6px 0 10px}
-  .badgecard .bid{font:13px var(--mono);color:var(--acc);word-break:break-all}
-  .badgecard .meta{display:flex;align-items:center;gap:8px;margin-top:14px;font:12.5px var(--mono);color:var(--ok)}
-  .badgecard .meta svg{flex:none}
-  .verifyline{margin-top:22px;font:13px var(--mono);color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px;word-break:break-all}
+  /* badges */
+  .badges{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:44px;border:1px solid var(--ink)}
+  @media(max-width:860px){.badges{grid-template-columns:1fr}}
+  .badgecard{padding:30px 32px;position:relative}
+  .badgecard:first-child{border-right:1px solid var(--ink)}
+  @media(max-width:860px){.badgecard:first-child{border-right:none;border-bottom:1px solid var(--ink)}}
+  .badgecard .role{font:600 11.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+  .badgecard .name{font:800 24px var(--disp);letter-spacing:-.02em;margin:10px 0 12px}
+  .badgecard .bid{font:500 13px var(--mono);color:var(--green);word-break:break-all;background:var(--paper2);display:inline-block;padding:5px 10px;border-radius:6px}
+  .badgecard .meta{display:flex;align-items:center;gap:9px;margin-top:18px;font:500 12.5px var(--mono);color:var(--green)}
+  .stamp{position:absolute;top:26px;right:26px;font:700 10.5px var(--mono);letter-spacing:.14em;color:var(--green);border:1.5px solid var(--green);border-radius:4px;padding:5px 9px;transform:rotate(6deg);text-transform:uppercase;background:rgba(217,242,79,.35)}
+  .verifyline{margin-top:22px;font:500 12.5px var(--mono);color:var(--ink2);background:var(--paper2);border:1px dashed var(--line2);border-radius:8px;padding:13px 16px;word-break:break-all}
 
-  /* evidence table */
-  .evtable{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  table{width:100%;border-collapse:collapse;font:13.5px var(--mono)}
-  th,td{text-align:left;padding:13px 20px;border-bottom:1px solid var(--line);vertical-align:top}
-  tr:last-child td{border-bottom:none}
-  th{color:var(--dim);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.02)}
-  td:first-child{color:var(--dim)}
-  tbody tr:hover{background:rgba(77,163,255,.04)}
+  /* evidence */
+  .evtable{margin-top:44px;border-top:1px solid var(--ink)}
   .evscroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font:500 13px var(--mono)}
+  th,td{text-align:left;padding:13px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font:600 11px var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--dim);border-bottom:1px solid var(--ink)}
+  td:first-child{color:var(--ink2)}
+  tbody tr:hover{background:var(--paper2)}
 
   /* video */
-  .videowrap{border-radius:16px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 24px 60px rgba(0,0,0,.45)}
-  video{display:block;width:100%}
+  .videosec .videowrap{margin-top:44px;border:1.5px solid var(--ink);border-radius:14px;overflow:hidden;box-shadow:12px 12px 0 var(--lime)}
+  video{display:block;width:100%;background:#000}
 
-  /* mainnet cards */
-  .grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  @media(max-width:820px){.grid4{grid-template-columns:1fr}}
-  .mcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
-  .mcard h3{font-size:16px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-  .mcard h3 .n{font:700 12px var(--mono);color:var(--acc2);border:1px solid rgba(124,92,255,.4);border-radius:7px;padding:2px 8px}
-  .mcard p{color:var(--dim);font-size:14px}
-  .mcard code{font-family:var(--mono);font-size:.88em;background:rgba(77,163,255,.12);color:var(--acc);padding:1px 6px;border-radius:5px}
+  /* mainnet */
+  .grid4{display:grid;grid-template-columns:1fr 1fr;margin-top:44px;border:1px solid var(--ink)}
+  @media(max-width:860px){.grid4{grid-template-columns:1fr}}
+  .mcard{padding:28px 30px;border-left:1px solid var(--ink);border-top:1px solid var(--ink)}
+  .mcard:nth-child(odd){border-left:none}
+  .mcard:nth-child(-n+2){border-top:none}
+  @media(max-width:860px){.mcard{border-left:none}.mcard:nth-child(2){border-top:1px solid var(--ink)}}
+  .mcard h3{font:700 17px var(--disp);letter-spacing:-.01em;margin-bottom:10px;display:flex;align-items:baseline;gap:12px}
+  .mcard h3 .n{font:italic 400 22px var(--serif);color:var(--green)}
+  .mcard p{color:var(--ink2);font-size:14.5px}
+  .mcard code{font:500 .88em var(--mono);background:var(--lime);color:var(--ink);padding:1px 7px;border-radius:5px}
 
-  footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--dim);font-size:14px}
-  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-  footer b{color:var(--ink)}
+  /* footer */
+  footer{background:var(--green);color:var(--paper);padding:64px 0 34px;margin-top:0}
+  .foot-word{font:900 clamp(52px,9vw,120px)/0.95 var(--disp);letter-spacing:-.035em;text-transform:uppercase;color:var(--lime)}
+  .foot-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:34px;padding-top:24px;border-top:1px solid rgba(246,243,236,.25);font:500 12.5px var(--mono);letter-spacing:.05em;color:rgba(246,243,236,.85)}
+  footer b{color:var(--lime)}
+  footer a{color:var(--lime)}
 </style>
 </head>
 <body>
@@ -139,44 +154,50 @@
       <a href="#mainnet">Mainnet</a>
     </div>
     <a class="ghbtn" href="https://github.com/dannytungadi5/proofsight-agent" style="margin-left:auto">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-      Source
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      SOURCE
     </a>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <span class="pill"><span class="dot"></span>LIVE ON CONCORDIUM TESTNET</span>
-    <h1>Agents that <span class="grad">verify, pay and audit</span> each other on-chain</h1>
+    <div class="hero-top"><span class="live-dot"></span>Live on Concordium Testnet &middot; Encode Club Trusted Agents Hackathon</div>
+    <h1>Agents that <em>verify,</em> pay &amp; audit each other on-chain</h1>
     <p class="sub">ProofSight is an autonomous data-analysis agent that sells its work to other agents over HTTP,
-    paid per request in CCD via x402 micropayments. Both sides carry a Verified by Concordium badge from the
+    paid per request in CCD via <b>x402 micropayments</b>. Both sides carry a <b>Verified by Concordium</b> badge from the
     Agent Registry (CIS-8004), and every delivered report is hash-anchored on-chain as an EU AI Act style audit record.</p>
     <div class="ctas">
-      <a class="btn btn-p" href="#video"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5-9-5.5z"/></svg>Watch the demo</a>
-      <a class="btn btn-s" href="#evidence">Verify on-chain evidence</a>
+      <a class="btn btn-p" href="#video"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5-9-5.5z"/></svg>WATCH THE DEMO</a>
+      <a class="btn btn-s" href="#evidence">VERIFY ON-CHAIN EVIDENCE</a>
     </div>
+  </div>
+  <div class="wrap">
     <div class="stats">
       <div class="stat"><b>2</b><span>badge-verified agents (seller + buyer)</span></div>
       <div class="stat"><b>15<span class="u">/15</span></b><span>registry badge checks passing</span></div>
-      <div class="stat"><b>4</b><span>real x402 payments settled on testnet</span></div>
+      <div class="stat"><b>5</b><span>real x402 payments settled on testnet</span></div>
       <div class="stat"><b>1<span class="u"> CCD</span></b><span>price per analysis report</span></div>
     </div>
   </div>
+  <div class="marquee"><div class="marquee-inner">
+    <span>Verified by Concordium</span><span>&mdash;</span><span>x402 micropayments</span><span>&mdash;</span><span>CIS-8004 Agent Registry</span><span>&mdash;</span><span>On-chain audit anchors</span><span>&mdash;</span><span>Identity-verified owners</span><span>&mdash;</span>
+    <span>Verified by Concordium</span><span>&mdash;</span><span>x402 micropayments</span><span>&mdash;</span><span>CIS-8004 Agent Registry</span><span>&mdash;</span><span>On-chain audit anchors</span><span>&mdash;</span><span>Identity-verified owners</span><span>&mdash;</span>
+  </div></div>
 </header>
 
 <section id="how">
   <div class="wrap">
-    <div class="label">How it works</div>
-    <h2>One purchase, five verifiable steps</h2>
+    <div class="eyebrow">How it works</div>
+    <h2>One purchase, <em>five verifiable steps</em></h2>
     <p class="lede">A real run of the buyer agent against the live seller. No mockups: the output below is the actual terminal capture, and every artifact it produced is linked in the evidence table.</p>
     <div class="flow">
       <div class="steps">
-        <div class="step"><div class="stepnum">1</div><div><b>Discovery + trust check</b><p>The buyer finds ProofSight's agent card and verifies its Concordium badge via the Agent Registry: Active status, a verified human owner, and the served card's SHA-256 matching the hash pinned on-chain. No valid badge, no payment.</p></div></div>
-        <div class="step"><div class="stepnum">2</div><div><b>HTTP 402 Payment Required</b><p>The buyer calls <code>POST /analyze</code> and receives an x402 payment requirement: 1 CCD on Concordium testnet.</p></div></div>
-        <div class="step"><div class="stepnum">3</div><div><b>Signed payment</b><p>The buyer signs the payment with its Concordium account and retries. A self-hosted x402 facilitator verifies and settles on-chain, sponsoring the network fee.</p></div></div>
-        <div class="step"><div class="stepnum">4</div><div><b>Delivery</b><p>ProofSight returns the analysis report.</p></div></div>
-        <div class="step"><div class="stepnum">5</div><div><b>Audit anchor</b><p>The report's SHA-256 is written on-chain with a RegisterData transaction: a permanent record of what the agent produced, for whom, and when.</p></div></div>
+        <div class="step"><div class="stepnum">01</div><div><b>Discovery + trust check</b><p>The buyer finds ProofSight's agent card and verifies its Concordium badge via the Agent Registry: Active status, a verified human owner, and the served card's SHA-256 matching the hash pinned on-chain. No valid badge, no payment.</p></div></div>
+        <div class="step"><div class="stepnum">02</div><div><b>HTTP 402 Payment Required</b><p>The buyer calls <code>POST /analyze</code> and receives an x402 payment requirement: 1 CCD on Concordium testnet.</p></div></div>
+        <div class="step"><div class="stepnum">03</div><div><b>Signed payment</b><p>The buyer signs the payment with its Concordium account and retries. A self-hosted x402 facilitator verifies and settles on-chain, sponsoring the network fee.</p></div></div>
+        <div class="step"><div class="stepnum">04</div><div><b>Delivery</b><p>ProofSight returns the analysis report.</p></div></div>
+        <div class="step"><div class="stepnum">05</div><div><b>Audit anchor</b><p>The report's SHA-256 is written on-chain with a RegisterData transaction: a permanent record of what the agent produced, for whom, and when.</p></div></div>
       </div>
       <div class="term">
         <div class="termbar">
@@ -196,26 +217,28 @@
 - First -&gt; last: 120 -&gt; 263 (+119.17%)
 - Trend: upward | Anomalies (|z| &gt; 2): none</span>
 <span class="d">--- SETTLEMENT ---</span>
-<span class="w">txHash: ab9ac50526a55439f5da09457de5417e0f...</span>
+<span class="w">txHash: 364749b324159ca9ee8d7a4b3313872c32...</span>
 <span class="g">reportSha256 anchored on-chain (RegisterData)</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="agents" style="background:var(--bg2)">
+<section id="agents" style="background:var(--paper2)">
   <div class="wrap">
-    <div class="label">Verified agents</div>
-    <h2>Both sides carry the Concordium badge</h2>
+    <div class="eyebrow">Verified agents</div>
+    <h2>Both sides carry the <em>Concordium badge</em></h2>
     <p class="lede">Each agent is a CIS-8004 registry entry backed by an identity-verified human owner. Anyone can verify the badges against the chain, no account needed.</p>
     <div class="badges">
       <div class="badgecard">
+        <div class="stamp">Verified</div>
         <div class="role">Seller agent</div>
         <div class="name">ProofSight</div>
         <div class="bid">JyP9XuZ1MiqWZV82gCRTo</div>
         <div class="meta"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8.2l2 2 4-4.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>token 1493 &middot; Active &middot; card hash pinned on-chain</div>
       </div>
       <div class="badgecard">
+        <div class="stamp">Verified</div>
         <div class="role">Buyer agent</div>
         <div class="name">ProofSight Buyer</div>
         <div class="bid">JyP9Y27twsq5YEYidFCan</div>
@@ -228,8 +251,8 @@
 
 <section id="evidence">
   <div class="wrap">
-    <div class="label">Live testnet evidence</div>
-    <h2>Every claim resolves on CCDExplorer</h2>
+    <div class="eyebrow">Live testnet evidence</div>
+    <h2>Every claim resolves on <em>CCDExplorer</em></h2>
     <p class="lede">All activity below is finalised Concordium testnet state, produced by the agents themselves.</p>
     <div class="evtable"><div class="evscroll"><table>
       <thead><tr><th>Artifact</th><th>Link</th></tr></thead>
@@ -243,17 +266,19 @@
       <tr><td>x402 payment 2 &middot; 1 CCD</td><td><a href="https://ccdexplorer.io/testnet/transaction/18df66568dff32d0f272222b25410cc07c670217b339cc97b8d7e78e7dbe20e0">ccdexplorer</a></td></tr>
       <tr><td>x402 payment 3 &middot; 1 CCD</td><td><a href="https://ccdexplorer.io/testnet/transaction/cf2689fab224402f7da5db6b5632afc5be93589248b8d30f19f825e8dda3884a">ccdexplorer</a></td></tr>
       <tr><td>x402 payment 4 &middot; 1 CCD</td><td><a href="https://ccdexplorer.io/testnet/transaction/ab9ac50526a55439f5da09457de5417e0feb63803037b73796565424eb4e369b">ccdexplorer</a></td></tr>
+      <tr><td>x402 payment 5 &middot; 1 CCD (fresh QA run)</td><td><a href="https://ccdexplorer.io/testnet/transaction/364749b324159ca9ee8d7a4b3313872c325e4e8f983108f2075eaba068bbdeb3">ccdexplorer</a></td></tr>
+      <tr><td>Audit anchor 2 (report hash, RegisterData)</td><td><a href="https://ccdexplorer.io/testnet/transaction/75a951a3e241cd540bb669dd3a1930d3aa3efecb29e31c03a5083ce5cbaee75c">ccdexplorer</a></td></tr>
       <tr><td>Source code</td><td><a href="https://github.com/dannytungadi5/proofsight-agent">github.com/dannytungadi5/proofsight-agent</a></td></tr>
       </tbody>
     </table></div></div>
   </div>
 </section>
 
-<section id="video" style="background:var(--bg2)">
+<section id="video" class="videosec" style="background:var(--paper2)">
   <div class="wrap">
-    <div class="label">Demo video</div>
-    <h2>End to end in 1 minute 40 seconds</h2>
-    <p class="lede">Badge verification, the 402 challenge, the x402 payment, the delivered report, and both on-chain artifacts.</p>
+    <div class="eyebrow">Demo video</div>
+    <h2>End to end in <em>1 minute 40</em></h2>
+    <p class="lede">Badge verification, the 402 challenge, the x402 payment, the delivered report, and both on-chain artifacts. Narrated.</p>
     <div class="videowrap">
       <video controls preload="metadata" src="https://dannytungadi5.github.io/proofsight-agent/docs/proofsight-demo.mp4?v=2"></video>
     </div>
@@ -262,9 +287,9 @@
 
 <section id="mainnet">
   <div class="wrap">
-    <div class="label">Path to mainnet</div>
-    <h2>Built on infrastructure that already ships</h2>
-    <p class="lede" style="margin-bottom:32px">This is not a testnet-only toy: every piece has a mainnet counterpart today.</p>
+    <div class="eyebrow">Path to mainnet</div>
+    <h2>Built on infrastructure that <em>already ships</em></h2>
+    <p class="lede">This is not a testnet-only toy: every piece has a mainnet counterpart today.</p>
     <div class="grid4">
       <div class="mcard"><h3><span class="n">01</span>Config change, not a rebuild</h3><p>The Agent Registry (CIS-8004), the CIS-8 key registry and the badge flow are Concordium platform services that already exist on mainnet. Moving means switching the network parameter, contract addresses and identity flow.</p></div>
       <div class="mcard"><h3><span class="n">02</span>Real economics</h3><p>1 CCD per report is real revenue on mainnet. Facilitator fee sponsorship (~0.05 CCD per settlement) is the seller's customer-acquisition cost and can be priced in.</p></div>
@@ -276,8 +301,11 @@
 
 <footer>
   <div class="wrap">
-    <div>Built by <b>Septian Panjaya</b> for the Concordium Trusted Agents Hackathon (Encode Club, Nov-Dec 2026).</div>
-    <div>Everything on this page is verifiable on Concordium testnet.</div>
+    <div class="foot-word">ProofSight</div>
+    <div class="foot-row">
+      <div>Built by <b>Septian Panjaya</b> for the Concordium Trusted Agents Hackathon (Encode Club, Nov-Dec 2026).</div>
+      <div>Everything on this page is verifiable on Concordium testnet.</div>
+    </div>
   </div>
 </footer>
 
