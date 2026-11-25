@@ -84,10 +84,10 @@ Explorer base: `https://ccdexplorer.io/testnet/transaction/<hash>`.
 
 1. ~~Register the buyer as a second agent~~ DONE (badge valid, hash pinned).
 2. ~~README~~ DONE (architecture, evidence table, path to mainnet).
-3. Public deployment: DECIDED 25 Nov - Cloudflare Pages (pages.dev) on the
-   user's own account only; no other hosting accounts. Submitter name for the
-   Encode Club form: Septian Panjaya. Public-facing name everywhere:
-   Septian Panjaya.
+3. ~~Public deployment~~ DONE 25 Nov ~14:45 WITA: https://proofsight.pages.dev
+   (Cloudflare Pages Direct Upload on the user's own account, pages.dev only;
+   demo video embedded). Submitter name for the Encode Club form:
+   Septian Panjaya. Public-facing name everywhere: Septian Panjaya.
 4. Record demo video ≤3 min (badge check → 402 → pay → report → explorer +
    audit anchor). Upload (YouTube unlisted on dannytungadi5 Google, or Drive link).
 5. Submit via Encode Club dashboard (registered 25 Nov 12:46). Deadline:
