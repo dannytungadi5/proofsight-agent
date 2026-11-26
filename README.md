@@ -78,6 +78,9 @@ badge at `https://agent-registry-mcp.concordium.com/v1/badge-check/<badge>?netwo
 | x402 payment 1 (1 CCD) | https://ccdexplorer.io/testnet/transaction/b35613f9a835e3a5ce774fe417f0640d0ab260e71022c17ae3d8013494b6672f |
 | Audit anchor for payment 1 | https://ccdexplorer.io/testnet/transaction/4ee4ae672de8d8c4136b5519164c7fc5238084dff3382d85cd8221b855b941f4 |
 | x402 payment 2 (1 CCD) | https://ccdexplorer.io/testnet/transaction/18df66568dff32d0f272222b25410cc07c670217b339cc97b8d7e78e7dbe20e0 |
+| x402 payments 3-5 + anchors | full table on the live site: https://proofsight.pages.dev/#evidence |
+| x402 payment 6 (1 CCD, scenario 2 self-audit order) | https://ccdexplorer.io/testnet/transaction/0b32d6c59ff04067c332c9e3d00eb48b7815c16483cbd68856013cd74d8f4796 |
+| Audit anchor for payment 6 (scenario 2 report hash) | https://ccdexplorer.io/testnet/transaction/274ca3604145f5ea40e2b786c86670e3b6ad21c070c1bf8960ed3ce95c90f3a9 |
 | Accounts | seller `3YWKbsQVyV2QTJGLw8gsVyN6TJPvjyWoqfZxtybuWC9wDn2iei`, buyer `46MZRmiYH2uiEC5fAAnw4vto5PDzpKMLdxFo5aNLbKZdX2AXHC`, facilitator `3CBmfAFQp4A3Twr3g81i8HGwPwpwQShLUwokqpu7ps9aPGAXZL` (all derived from one identity-verified testnet account) |
 
 ## Repo layout
@@ -96,6 +99,26 @@ badge at `https://agent-registry-mcp.concordium.com/v1/badge-check/<badge>?netwo
 - `agent-card.json`, `buyer-agent-card.json`: A2A agent cards with the
   Concordium badge extension, served via GitHub Pages and hash-pinned on-chain.
 
+## Scenario 2: self-audit on real chain data
+
+The second demo order uses no sample numbers: the buyer asks ProofSight to
+analyse ProofSight's **own real on-chain activity**. `scripts/scenario-self-audit.mjs`
+fetches the seller account's first 15 testnet transactions (faucet funding,
+CIS-8004 registration, 5 x402 payments, audit anchors) from the public
+wallet-proxy API - data anyone can re-fetch and verify on CCDExplorer - builds
+the cadence series (seconds between consecutive actions), then buys the
+analysis over x402 like any other order. The delivered report's SHA-256 is
+anchored on-chain (see the evidence table), so the exact report that was sold
+is permanently provable.
+
+Findings from the real data: payment/anchor pairs settle 6-36 seconds apart
+(median gap 56s), and the only anomalies (|z| > 2) are the pauses between
+demo sessions.
+
+```bash
+node scripts/scenario-self-audit.mjs   # fetch real chain data -> badge check -> 402 -> pay 1 CCD -> report
+```
+
 ## Run it yourself
 
 Requirements: Node 20+, a Concordium testnet account with some CCD (faucet:
@@ -107,6 +130,7 @@ npm install
 node src/facilitator.mjs &   # :8402
 node src/server.mjs &        # :3000
 node scripts/buyer.mjs       # badge check -> 402 -> pay 1 CCD -> report
+node scripts/scenario-self-audit.mjs   # scenario 2: same flow on real chain data
 ```
 
 ## Path to mainnet

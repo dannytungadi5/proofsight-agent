@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ProofSight - Verified Agent-to-Agent Commerce on Concordium</title>
 <meta name="description" content="ProofSight sells data analysis to other agents, paid per request in CCD via x402, with Verified by Concordium badges on both sides and an on-chain audit record of every report.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1E4D38">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -150,6 +154,7 @@
     <a class="brand" href="#top"><span class="mark">PS</span>ProofSight</a>
     <div class="navlinks">
       <a href="#how">How it works</a>
+      <a href="#scenario2">Self-audit</a>
       <a href="#agents">Agents</a>
       <a href="#evidence">Evidence</a>
       <a href="#video">Demo</a>
@@ -178,7 +183,7 @@
     <div class="stats">
       <div class="stat"><b>2</b><span>badge-verified agents (seller + buyer)</span></div>
       <div class="stat"><b>15<span class="u">/15</span></b><span>registry badge checks passing</span></div>
-      <div class="stat"><b>5</b><span>real x402 payments settled on testnet</span></div>
+      <div class="stat"><b>6</b><span>real x402 payments settled on testnet</span></div>
       <div class="stat"><b>1<span class="u"> CCD</span></b><span>price per analysis report</span></div>
     </div>
   </div>
@@ -226,7 +231,69 @@
   </div>
 </section>
 
-<section id="agents" style="background:var(--paper2)">
+<section id="scenario2" style="background:var(--paper2)">
+  <div class="wrap">
+    <div class="eyebrow">Scenario 02 &middot; Self-audit</div>
+    <h2>The agent audits <em>itself</em> on real chain data</h2>
+    <p class="lede">A harder demo than sample numbers: the buyer ordered an analysis of ProofSight's <b>own real on-chain activity</b> -
+    the 15 testnet transactions below, fetched live from the public wallet-proxy API. Every row is a fact anyone can re-fetch and open
+    in CCDExplorer. The report about this data was bought for 1 CCD over x402 and hash-anchored on-chain, exactly like any other order.</p>
+    <div class="flow" style="align-items:start">
+      <div class="evtable" style="margin-top:0"><div class="evscroll"><table>
+        <thead><tr><th>#</th><th>Block</th><th>Action</th><th>Gap</th><th>Verify</th></tr></thead>
+        <tbody>
+        <tr><td>1</td><td>51262003</td><td>Faucet funding (testnet drop)</td><td>&mdash;</td><td><a href="https://ccdexplorer.io/testnet/transaction/c2a36f40ae8a41c7c26df716d8e894fdfe0124632d113d2347e69cacf6a1d4b3">ccdexplorer</a></td></tr>
+        <tr><td>2</td><td>51262096</td><td>Seller registration &middot; CIS-8004</td><td>+186s</td><td><a href="https://ccdexplorer.io/testnet/transaction/e65fa0c4c229ccc83239bb634e23b1f59f3fbd5fc653fe1795e7962dbceba0d8">ccdexplorer</a></td></tr>
+        <tr><td>3</td><td>51262134</td><td>Contract call &middot; set agent URI</td><td>+76s</td><td><a href="https://ccdexplorer.io/testnet/transaction/a5f7c28bd38acdf4d87e7e64fe54c446d34ea77236aed149684af5a89450ed88">ccdexplorer</a></td></tr>
+        <tr><td>4</td><td>51262218</td><td>x402 payment 1 &middot; 1 CCD</td><td>+168s</td><td><a href="https://ccdexplorer.io/testnet/transaction/b35613f9a835e3a5ce774fe417f0640d0ab260e71022c17ae3d8013494b6672f">ccdexplorer</a></td></tr>
+        <tr><td>5</td><td>51262236</td><td>Audit anchor (report hash)</td><td>+36s</td><td><a href="https://ccdexplorer.io/testnet/transaction/4ee4ae672de8d8c4136b5519164c7fc5238084dff3382d85cd8221b855b941f4">ccdexplorer</a></td></tr>
+        <tr><td>6</td><td>51262245</td><td>x402 payment 2 &middot; 1 CCD</td><td>+18s</td><td><a href="https://ccdexplorer.io/testnet/transaction/18df66568dff32d0f272222b25410cc07c670217b339cc97b8d7e78e7dbe20e0">ccdexplorer</a></td></tr>
+        <tr><td>7</td><td>51262248</td><td>Audit anchor (report hash)</td><td>+6s</td><td><a href="https://ccdexplorer.io/testnet/transaction/a2d3c5b42f8cc7a4b24179a3733126e8c03361e5096806cae7b2f21f162dce3b">ccdexplorer</a></td></tr>
+        <tr><td>8</td><td>51262400</td><td>x402 payment 3 &middot; 1 CCD</td><td>+304s</td><td><a href="https://ccdexplorer.io/testnet/transaction/cf2689fab224402f7da5db6b5632afc5be93589248b8d30f19f825e8dda3884a">ccdexplorer</a></td></tr>
+        <tr><td>9</td><td>51262403</td><td>Audit anchor (report hash)</td><td>+6s</td><td><a href="https://ccdexplorer.io/testnet/transaction/632a8321b4a3e61fe19bb0b79c5e254d74106ded14eccb4aa9dcb38bbe320387">ccdexplorer</a></td></tr>
+        <tr><td>10</td><td>51262412</td><td>Audit anchor (report hash)</td><td>+18s</td><td><a href="https://ccdexplorer.io/testnet/transaction/797de8304b8712cffe59392de2d95416a0a47e8606bb471885d1b04e23371672">ccdexplorer</a></td></tr>
+        <tr><td>11</td><td>51263381</td><td>x402 payment 4 &middot; 1 CCD</td><td>+1938s</td><td><a href="https://ccdexplorer.io/testnet/transaction/ab9ac50526a55439f5da09457de5417e0feb63803037b73796565424eb4e369b">ccdexplorer</a></td></tr>
+        <tr><td>12</td><td>51263384</td><td>Audit anchor (report hash)</td><td>+6s</td><td><a href="https://ccdexplorer.io/testnet/transaction/3d32791576ee88af0c9c8c95da980ce83f60e0c306f8c457f8cf5e013d440b29">ccdexplorer</a></td></tr>
+        <tr><td>13</td><td>51263449</td><td>Contract call &middot; set agent URI</td><td>+130s</td><td><a href="https://ccdexplorer.io/testnet/transaction/40814ff9ca212e30c9eb1176c8e902a75f05dc1e0b24c1129b2dd2dfeda55de0">ccdexplorer</a></td></tr>
+        <tr><td>14</td><td>51265515</td><td>x402 payment 5 &middot; 1 CCD</td><td>+4140s</td><td><a href="https://ccdexplorer.io/testnet/transaction/364749b324159ca9ee8d7a4b3313872c325e4e8f983108f2075eaba068bbdeb3">ccdexplorer</a></td></tr>
+        <tr><td>15</td><td>51265518</td><td>Audit anchor (report hash)</td><td>+6s</td><td><a href="https://ccdexplorer.io/testnet/transaction/75a951a3e241cd540bb669dd3a1930d3aa3efecb29e31c03a5083ce5cbaee75c">ccdexplorer</a></td></tr>
+        </tbody>
+      </table></div></div>
+      <div>
+        <div class="term">
+          <div class="termbar">
+            <span class="tdot" style="background:#ff5f56"></span><span class="tdot" style="background:#ffbd2e"></span><span class="tdot" style="background:#27c93f"></span>
+            <span class="termtitle">self-audit order - live run, 27 Nov 2026</span>
+          </div>
+          <div class="termbody"><span class="p">$ node scripts/scenario-self-audit.mjs</span>
+<span class="d">dataset: 15 real txs from wallet-proxy, 14 cadence deltas</span>
+<span class="g">seller badge_valid: true | status: Active</span>
+<span class="y">first response: 402</span>
+<span class="g">second response: 200</span>
+<span class="d">--- REPORT ---</span>
+<span class="w"># ProofSight analysis: ProofSight's own on-chain cadence -
+seconds between consecutive transactions in its first 15 real
+testnet actions (payments, audit anchors, registrations)</span>
+<span class="d">- Data points: 14
+- Mean: 502.7143 | Median: 56.0000 | Stdev: 1119.2262
+- Range: 6 .. 4140
+- Anomalies (|z| &gt; 2): #12=4140 (z=3.25)</span>
+<span class="d">--- SETTLEMENT ---</span>
+<span class="w">txHash: 0b32d6c59ff04067c332c9e3d00eb48b...</span>
+<span class="g">reportSha256 anchored on-chain (RegisterData)</span></div>
+        </div>
+        <p style="color:var(--ink2);font-size:14.5px;margin-top:22px">The analysis is real and so is what it found: payment and audit-anchor pairs settle
+        <b>6-36 seconds</b> apart (median gap 56s), and the two long gaps the report flags as anomalies are simply pauses between demo sessions.
+        Reproduce the input: <code style="font:500 .9em var(--mono);background:var(--lime);padding:1px 7px;border-radius:5px">GET wallet-proxy.testnet.concordium.com/v1/accTransactions/&lt;seller&gt;</code> -
+        then recompute the report's SHA-256 and compare it with the RegisterData payload in
+        <a href="https://ccdexplorer.io/testnet/transaction/274ca3604145f5ea40e2b786c86670e3b6ad21c070c1bf8960ed3ce95c90f3a9">audit anchor 3</a>.
+        Payment for this order: <a href="https://ccdexplorer.io/testnet/transaction/0b32d6c59ff04067c332c9e3d00eb48b7815c16483cbd68856013cd74d8f4796">x402 payment 6</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agents" style="background:var(--paper)">
   <div class="wrap">
     <div class="eyebrow">Verified agents</div>
     <h2>Both sides carry the <em>Concordium badge</em></h2>
@@ -270,6 +337,8 @@
       <tr><td>x402 payment 4 &middot; 1 CCD</td><td><a href="https://ccdexplorer.io/testnet/transaction/ab9ac50526a55439f5da09457de5417e0feb63803037b73796565424eb4e369b">ccdexplorer</a></td></tr>
       <tr><td>x402 payment 5 &middot; 1 CCD (fresh QA run)</td><td><a href="https://ccdexplorer.io/testnet/transaction/364749b324159ca9ee8d7a4b3313872c325e4e8f983108f2075eaba068bbdeb3">ccdexplorer</a></td></tr>
       <tr><td>Audit anchor 2 (report hash, RegisterData)</td><td><a href="https://ccdexplorer.io/testnet/transaction/75a951a3e241cd540bb669dd3a1930d3aa3efecb29e31c03a5083ce5cbaee75c">ccdexplorer</a></td></tr>
+      <tr><td>x402 payment 6 &middot; 1 CCD (scenario 2: self-audit order)</td><td><a href="https://ccdexplorer.io/testnet/transaction/0b32d6c59ff04067c332c9e3d00eb48b7815c16483cbd68856013cd74d8f4796">ccdexplorer</a></td></tr>
+      <tr><td>Audit anchor 3 (scenario 2 report hash, RegisterData)</td><td><a href="https://ccdexplorer.io/testnet/transaction/274ca3604145f5ea40e2b786c86670e3b6ad21c070c1bf8960ed3ce95c90f3a9">ccdexplorer</a></td></tr>
       <tr><td>Source code</td><td><a href="https://github.com/dannytungadi5/proofsight-agent">github.com/dannytungadi5/proofsight-agent</a></td></tr>
       </tbody>
     </table></div></div>
