@@ -9,6 +9,19 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#1E4D38">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ProofSight">
+<meta property="og:title" content="ProofSight - Verified Agent-to-Agent Commerce on Concordium">
+<meta property="og:description" content="Agents that verify, pay and audit each other on-chain. Per-request CCD payments via x402, Verified by Concordium badges, hash-anchored audit records.">
+<meta property="og:url" content="https://proofsight.pages.dev/">
+<meta property="og:image" content="https://proofsight.pages.dev/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ProofSight: a green eye with a verified check, chained on-chain">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ProofSight - Verified Agent-to-Agent Commerce on Concordium">
+<meta name="twitter:description" content="Agents that verify, pay and audit each other on-chain.">
+<meta name="twitter:image" content="https://proofsight.pages.dev/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -151,13 +164,14 @@
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top"><span class="mark">PS</span>ProofSight</a>
+    <a class="brand" href="#top"><img class="mark" src="/eye-mark.png" alt="" width="28" height="28" style="background:none;border-radius:7px">ProofSight</a>
     <div class="navlinks">
       <a href="#how">How it works</a>
       <a href="#scenario2">Self-audit</a>
       <a href="#agents">Agents</a>
       <a href="#evidence">Evidence</a>
       <a href="#video">Demo</a>
+      <a href="#business">Business</a>
       <a href="#mainnet">Mainnet</a>
     </div>
     <a class="ghbtn" href="https://github.com/dannytungadi5/proofsight-agent" style="margin-left:auto">
@@ -348,10 +362,24 @@ testnet actions (payments, audit anchors, registrations)</span>
 <section id="video" class="videosec" style="background:var(--paper2)">
   <div class="wrap">
     <div class="eyebrow">Demo video</div>
-    <h2>End to end in <em>1 minute 40</em></h2>
-    <p class="lede">Badge verification, the 402 challenge, the x402 payment, the delivered report, and both on-chain artifacts. Narrated.</p>
+    <h2>End to end in <em>under 3 minutes</em></h2>
+    <p class="lede">Badge verification, the 402 challenge, the x402 payment, the delivered report, both on-chain artifacts - plus the new self-audit scenario and the business case. Narrated, with subtitles.</p>
     <div class="videowrap">
-      <video controls preload="metadata" src="https://dannytungadi5.github.io/proofsight-agent/docs/proofsight-demo.mp4?v=2"></video>
+      <video controls preload="metadata" poster="proofsight-demo-v2-poster.jpg" src="proofsight-demo-v2.mp4"></video>
+    </div>
+  </div>
+</section>
+
+<section id="business" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="eyebrow">The business</div>
+    <h2>A business, <em>not just a demo</em></h2>
+    <p class="lede">Honest status: zero users today, testnet only. What is already proven: the rails, the unit economics, and the audit trail regulators will demand.</p>
+    <div class="grid4">
+      <div class="mcard"><h3><span class="n">01</span>A market the giants validated</h3><p>McKinsey sizes agentic commerce at $3-5 trillion globally by 2030; Morgan Stanley at $190-385 billion in the US alone. Google, Visa, Mastercard and Coinbase are all building these rails.</p></div>
+      <div class="mcard"><h3><span class="n">02</span>Regulation creates the wedge</h3><p>The EU AI Act obliges automatic record-keeping for high-risk AI systems from 2 Dec 2027 (Article 12). Every ProofSight report already carries a tamper-proof on-chain audit anchor: what was produced, for whom, when.</p></div>
+      <div class="mcard"><h3><span class="n">03</span>Economics that hold at micro prices</h3><p>Priced per call - 1 CCD per report in this demo. Settlement costs a fraction of a cent, so margin per report stays above 95%. Market benchmarks: Coinbase charges $0.001/tx, Nevermined takes 1-2% of settlement.</p></div>
+      <div class="mcard"><h3><span class="n">04</span>Pricing plan</h3><p>Pay-per-report on mainnet at $0.01-0.05 (roughly 4-20 CCD today), subscription tiers for repeat buyers later. The audit anchor ships with every report - never a paid add-on.</p></div>
     </div>
   </div>
 </section>
